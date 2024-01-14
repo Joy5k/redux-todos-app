@@ -20,11 +20,11 @@ const TodoCard = ({ id, title, description,isCompleted }: TTodoCartProps) => {
     <div>
       <div className="bg-white rounded-md flex justify-between items-center p-3 border ">
         <input  onChange={toggleState}  type="checkbox" name="complete" id="complete" />
-        <p className="font-semibold">{title}</p>
-        <div>
+        <p className="font-semibold flex-1">{title}</p>
+        <div className="flex-1">
           {isCompleted ? <p className="text-green-500">Done</p> : <p className="text-red-500">Pending</p> }
        </div>
-        <p>{description}</p>
+        <p className="flex-2">{description}</p>
         <div className="space-x-5">
           <Button
             onClick={() => dispatch(removeTodo(id))}
