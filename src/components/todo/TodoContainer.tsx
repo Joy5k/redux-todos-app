@@ -1,4 +1,4 @@
-import { useAppSelector } from "@/redux/hook";
+// import { useAppSelector } from "@/redux/hook";
 import AddTodoModal from "./AddTodoModal";
 import TodoCard from "./TodoCard";
 import TodoFilter from "./TodoFilter";
@@ -7,7 +7,7 @@ import { JSX } from "react/jsx-runtime";
 
 
 const TodoContainer = () => {
-  const {todos}=useAppSelector((state)=>state.todos)
+  // const {todos}=useAppSelector((state)=>state.todos)
 
   const { data, isLoading, isError } = useGetTodosQuery(undefined)
   if (isLoading) { 
@@ -16,7 +16,7 @@ const TodoContainer = () => {
   if (isError) { 
     <p>Loading...</p>
   }
-  console.log(data);
+console.log(data);
   return (
     <div>
       <div className=" flex justify-between mb-5">    
@@ -31,7 +31,7 @@ const TodoContainer = () => {
 
         <div className="bg-white p-5 w-full space-y-3 h-full rounded-lg">
           {
-            todos.map((item: JSX.IntrinsicAttributes & { id: string; title: string; description: string; isCompleted?: boolean | undefined; }) => (<TodoCard key={item.id} {...item}></TodoCard>))
+            data?.map((item: JSX.IntrinsicAttributes & { id: string; title: string; description: string; priority: string; isCompleted?: boolean | undefined; }) => (<TodoCard key={item.id} {...item}></TodoCard>))
          }
         </div>
       </div>
