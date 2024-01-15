@@ -10,7 +10,7 @@ type TTodoCartProps = {
   isCompleted?: boolean;
 };
 
-const TodoCard = ({ id, title, description,isCompleted,priority,_id }: TTodoCartProps) => {
+const TodoCard = ({ title, description,isCompleted,priority,_id }: TTodoCartProps) => {
   const [updateTodo, { isLoading }] = useUpdateTodoMutation()
   const [deleteTodo,{isError}]=useDeleteTodoMutation()
   const toggleState = () => {
@@ -92,6 +92,7 @@ const TodoCard = ({ id, title, description,isCompleted,priority,_id }: TTodoCart
           </Button>
         </div>
       </div>
+      
     </div>
   );
 };

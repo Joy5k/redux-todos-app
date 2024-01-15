@@ -32,7 +32,7 @@ const TodoContainer = () => {
 
         <div className="bg-white p-5 w-full space-y-3 h-full rounded-lg">
           {
-            data?.map((item: JSX.IntrinsicAttributes & { id: string; title: string; description: string; priority: string; isCompleted?: boolean | undefined; }) => (<TodoCard key={item.id} {...item}></TodoCard>))
+            data?.map((item: JSX.IntrinsicAttributes & { id: string; title: string; description: string; priority: string; isCompleted?: boolean | undefined; }) => (<TodoCard _id={""} key={item.id} {...item}></TodoCard>))
          }
         </div>
       </div>

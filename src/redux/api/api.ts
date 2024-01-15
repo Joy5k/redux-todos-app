@@ -3,8 +3,8 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 export const baseApi = createApi({
   reducerPath: "baseAPi",
   baseQuery: fetchBaseQuery({
-    // baseUrl: "https://server-faap99b2d-joy5k.vercel.app",
-    baseUrl: "http://localhost:5000",
+    baseUrl: "https://server-cxvxikmjv-joy5k.vercel.app",
+    // baseUrl: "http://localhost:5000",
    
   }),
   tagTypes:["todo"],

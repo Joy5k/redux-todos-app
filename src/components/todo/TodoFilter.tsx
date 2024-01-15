@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Button } from "@/components/ui/button"
 import {
   DropdownMenu,
@@ -9,7 +10,8 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 
-const TodoFilter = ({priority,setPriority}) => {
+
+const TodoFilter = ({priority,setPriority}:any) => {
 
   return (
     <DropdownMenu>

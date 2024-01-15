@@ -20,41 +20,50 @@ import { Input } from "../ui/input";
 import { FormEvent, useState } from "react";
 import { DialogClose } from "@radix-ui/react-dialog";
 import { Button } from "../ui/button";
-import { useAddTodoMutation } from "@/redux/api/api";
+import { useUpdateTodoMutation } from "@/redux/api/api";
 
-const AddTodoModal = () => {
+const EditAddTodoModal = () => {
   const [task, setTask] = useState("");
   const [priority, setPriority] = useState("");
   const [description, setDescription] = useState("");
 
 
   // below the state structure is [actual function,{id,task,description,isCompleted}]=useAddTodoMutation
-  const [addTodo,{isLoading}]=useAddTodoMutation()
+  const [updateTodo, { isLoading }] = useUpdateTodoMutation()
+  
   console.log(isLoading);
   const onSubmit = (e: FormEvent) => {
     e.preventDefault();
- // below the line creating the random number for using task id.That's used for local state
-// const randomString = Math.random().toString(36).substring(2, 7);
     const taskDetails = {
-      // id: randomString,
+
       title: task,
       description: description,
       priority,
       isCompleted:false
-    };
-    //add task on local state
-    // dispatch(addTodo(taskDetails));
-
-    //Adding the task on server
-    addTodo(taskDetails);
+    }
+    updateTodo(taskDetails);
   };
 
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button className="bg-primary-gradient text-xl font-semibold">
-          Add Todo
-        </Button>
+      <Button className="bg-[#5C3FEF]">
+            <svg
+              className="size-5"
+              data-slot="icon"
+              fill="none"
+              strokeWidth="1.5"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L10.582 16.07a4.5 4.5 0 0 1-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 0 1 1.13-1.897l8.932-8.931Zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0 1 15.75 21H5.25A2.25 2.25 0 0 1 3 18.75V8.25A2.25 2.25 0 0 1 5.25 6H10"
+              ></path>
+          </svg>
+          </Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-[425px]">
         <form onSubmit={onSubmit}>
@@ -116,5 +125,5 @@ const AddTodoModal = () => {
   );
 };
 
-export default AddTodoModal;
-<h1>Add Todo Modal</h1>;
+export default EditAddTodoModal;
+
