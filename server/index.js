@@ -28,12 +28,17 @@ const client = new MongoClient(uri, {
     console.log("Successfully connected to MongoDB!");
 
     app.get("/", (req, res) => {
-      res.send("Task Master Server");
+      res.send("Task Master Server Running");
     });
 
     app.get("/tasks", async (req, res) => {
       try {
-        const tasks = await tasksCollection.find({}).toArray();
+        const query = {}
+        if (req.query.priority) {
+          query.priority = req.query.priority
+        }
+        console.log(query);
+        const tasks = await tasksCollection.find(query).toArray();
         res.json(tasks);
       } catch (err) {
         console.error("Error fetching tasks:", err);
@@ -52,9 +57,9 @@ const client = new MongoClient(uri, {
       }
     });
 
-    app.delete("/tasks/:id", async (req, res) => {
+    app.delete("/task/:id", async (req, res) => {
       const taskId = req.params.id;
-
+console.log(taskId);
       try {
         const result = await tasksCollection.deleteOne({
           _id: new ObjectId(taskId),
@@ -70,10 +75,10 @@ const client = new MongoClient(uri, {
       }
     });
 
-    app.patch("/tasks/:id", async (req, res) => {
+    app.put("/task/:id", async (req, res) => {
       const taskId = req.params.id;
       const updatedTaskData = req.body;
-
+      console.log(taskId,updatedTaskData);
       try {
         const result = await tasksCollection.updateOne(
           { _id: new ObjectId(taskId) },

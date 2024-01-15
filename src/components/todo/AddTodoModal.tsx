@@ -30,7 +30,7 @@ const AddTodoModal = () => {
 
   // below the state structure is [actual function,{id,task,description,isCompleted}]=useAddTodoMutation
   const [addTodo,{isLoading,isError,isSuccess}]=useAddTodoMutation()
-  console.log(isError,isLoading,isSuccess);
+  // const [deleteTodo,{error}]=useDeleteTodoMutation()
   const onSubmit = (e: FormEvent) => {
     e.preventDefault();
  // below the line creating the random number for using task id.That's used for local state
@@ -47,7 +47,6 @@ const AddTodoModal = () => {
 
     //Adding the task on server
     addTodo(taskDetails);
-console.log(taskDetails);
   };
 
   return (
